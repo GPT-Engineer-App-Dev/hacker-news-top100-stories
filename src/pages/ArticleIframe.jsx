@@ -16,13 +16,13 @@ const ArticleIframe = () => {
     queryFn: () => fetchStory(id),
   });
 
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error loading article</div>;
+  if (isLoading) return <div className="flex items-center justify-center h-screen">Loading...</div>;
+  if (error) return <div className="flex items-center justify-center h-screen">Error loading article</div>;
 
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col h-screen">
       <div className="flex justify-between items-center p-4 bg-background border-b">
-        <h2 className="text-xl font-semibold">{story.title}</h2>
+        <h2 className="text-xl font-semibold truncate flex-1 mr-4">{story.title}</h2>
         <Button variant="ghost" size="icon" asChild>
           <Link to="/">
             <X className="h-4 w-4" />
@@ -32,7 +32,7 @@ const ArticleIframe = () => {
       </div>
       <iframe
         src={story.url}
-        className="flex-grow w-full"
+        className="flex-grow w-full h-[calc(100vh-64px)]"
         title={story.title}
       />
     </div>
